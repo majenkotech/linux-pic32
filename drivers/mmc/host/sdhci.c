@@ -767,7 +767,9 @@ static void sdhci_prepare_data(struct sdhci_host *host, struct mmc_command *cmd)
 
 		if (unlikely(broken)) {
 			for_each_sg(data->sg, sg, data->sg_len, i) {
-				if (sg->length & 0x3) {
+				// Workaround for bug in PIC32MZ-DAK/L/R/S family:
+				// use PIO instead of ADMA for short transfers.
+				if (sg->length < 512) {
 					DBG("Reverting to PIO because of "
 						"transfer size (%d)\n",
 						sg->length);

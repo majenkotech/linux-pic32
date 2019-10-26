@@ -235,6 +235,10 @@ int pic32_sdhci_probe(struct platform_device *pdev)
 
 	host->quirks |= SDHCI_QUIRK_NO_HISPD_BIT;
 
+	// Workaround for bug in MZ-DAK/L/R/S family:
+	// use PIO instead of ADMA for short transfers.
+	host->quirks |= SDHCI_QUIRK_32BIT_ADMA_SIZE;
+
 	ret = mmc_of_parse(host->mmc);
 	if (ret)
 		goto err_host;
