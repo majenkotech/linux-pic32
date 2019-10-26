@@ -21,6 +21,9 @@ config PIC32MZDA
 	select LIBFDT
 	select USE_OF
 	select PINCTRL
+	select CGROUPS
+	select FHANDLE
+
 	help
 	  Support for the Microchip PIC32MZDA microcontroller.
 

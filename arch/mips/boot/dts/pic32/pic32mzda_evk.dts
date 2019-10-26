@@ -24,7 +24,7 @@
 	};
 
 	chosen {
-		bootargs = "earlyprintk=ttyS1,115200n8r console=ttyS1,115200n8";
+		bootargs = "earlyprintk=ttyS1,115200n8r console=ttyS1,115200n8 rootwait";
 	};
 
 	leds0 {
