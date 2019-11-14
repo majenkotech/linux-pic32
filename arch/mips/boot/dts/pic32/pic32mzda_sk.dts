@@ -142,6 +142,12 @@
 	pinctrl-0 = <&pinctrl_spi2>;
 	cs-gpios = <&pioD 0 GPIO_ACTIVE_LOW>, <&pioD 14 GPIO_ACTIVE_LOW>;
 	status = "okay";
+
+	spidev@0 {
+		compatible = "rohm,dh2228fv";
+		spi-max-frequency = <10000000>;
+		reg = <0>;
+       };
 };
 
 &pic32_pinctrl {
